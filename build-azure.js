@@ -10,8 +10,8 @@ console.log('Building application for Azure App Service...');
 try {
   // Run the regular build process
   console.log('Building client and server...');
-  execSync('vite build', { stdio: 'inherit' });
-  execSync('esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist', { stdio: 'inherit' });
+  execSync('npx vite build', { stdio: 'inherit' });
+  execSync('npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist', { stdio: 'inherit' });
   
   // Copy Azure deployment files
   console.log('Copying Azure deployment files...');
