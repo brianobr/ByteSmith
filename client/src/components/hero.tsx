@@ -10,76 +10,66 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "-1s" }}></div>
-      </div>
+    <section id="home" className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_50%)] opacity-30"></div>
       
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="text-light-custom">Brian</span>
-            <span className="text-primary-custom"> O'Brien</span>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="animate-fade-in space-y-8">
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
+            <span className="text-white">Brian O'Brien</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl font-light text-muted-custom mb-8">
-            AI Software Engineer & Cloud Architect
+          <h2 className="text-3xl md:text-4xl font-light text-blue-400 mb-6">
+            AI Software Engineer
           </h2>
-          <p className="text-lg md:text-xl text-light-custom/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Building intelligent applications with Azure OpenAI, .NET Core, and Python. 
-            Transforming ideas into scalable, AI-powered solutions.
+          <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
+            Specializing in Azure OpenAI, LangChain, and intelligent application design.<br />
+            Building scalable AI-powered solutions with .NET Core, Python, and cloud-native architecture.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          
+          <div className="pt-8">
             <Button 
               size="lg"
               onClick={() => handleScrollTo("#projects")}
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 font-semibold transition-all duration-300 transform hover:scale-105"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               View My Work
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              onClick={() => handleScrollTo("#contact")}
-              className="border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 font-semibold transition-all duration-300"
-            >
-              Get In Touch
+              <span className="ml-2">↓</span>
             </Button>
           </div>
         </div>
         
-        {/* Social links */}
-        <div className="mt-16 flex justify-center space-x-6 animate-slide-up">
+        {/* Social links - positioned at bottom */}
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-8">
           <a 
             href="https://github.com/brianobr" 
             target="_blank"
             rel="noopener noreferrer"
-            className="text-light-custom/60 hover:text-primary-custom transition-colors duration-300 text-2xl"
+            className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
           >
-            <Github className="w-8 h-8" />
+            <Github className="w-6 h-6" />
           </a>
           <a 
             href="https://www.linkedin.com/in/brian-o-brien-26073363" 
             target="_blank"
             rel="noopener noreferrer"
-            className="text-light-custom/60 hover:text-primary-custom transition-colors duration-300 text-2xl"
+            className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
           >
-            <Linkedin className="w-8 h-8" />
+            <Linkedin className="w-6 h-6" />
           </a>
           <a 
             href="mailto:brianobr@outlook.com"
-            className="text-light-custom/60 hover:text-primary-custom transition-colors duration-300 text-2xl"
+            className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
           >
-            <Mail className="w-8 h-8" />
+            <Mail className="w-6 h-6" />
           </a>
           <a 
             href="https://www.bytesmith.digital" 
             target="_blank"
             rel="noopener noreferrer"
-            className="text-light-custom/60 hover:text-primary-custom transition-colors duration-300 text-2xl"
+            className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
           >
-            <Globe className="w-8 h-8" />
+            <Globe className="w-6 h-6" />
           </a>
         </div>
       </div>

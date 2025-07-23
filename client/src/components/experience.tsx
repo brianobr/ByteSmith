@@ -49,33 +49,40 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-secondary/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-light-custom mb-4">Professional Experience</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
+    <section id="experience" className="py-24 bg-white dark:bg-slate-900">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">Professional Experience</h2>
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+            A timeline of my career journey building AI solutions and enterprise systems
+          </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experiences.map((exp, index) => (
             <div 
               key={index}
-              className="bg-dark-custom/50 p-8 rounded-xl border border-white/10 hover:border-primary/30 transition-all duration-300"
+              className="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-semibold text-primary-custom">{exp.title}</h3>
-                  <p className="text-light-custom/80">{exp.company}</p>
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6">
+                <div className="mb-4 lg:mb-0">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{exp.title}</h3>
+                  <p className="text-lg text-blue-600 dark:text-blue-400 font-semibold">{exp.company}</p>
                 </div>
-                <div className={`font-medium ${exp.current ? 'text-accent-custom' : 'text-accent-custom'}`}>
-                  {exp.period}
+                <div className="flex items-center">
+                  {exp.current && (
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 mr-3">
+                      Current
+                    </span>
+                  )}
+                  <span className="text-slate-600 dark:text-slate-300 font-medium">{exp.period}</span>
                 </div>
               </div>
-              <ul className="text-light-custom/80 space-y-2">
+              <ul className="space-y-3">
                 {exp.achievements.map((achievement, achievementIndex) => (
                   <li key={achievementIndex} className="flex items-start">
-                    <ChevronRight className="w-4 h-4 text-primary-custom mt-1 mr-3 flex-shrink-0" />
-                    {achievement}
+                    <ChevronRight className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+                    <span className="text-slate-700 dark:text-slate-300 leading-relaxed">{achievement}</span>
                   </li>
                 ))}
               </ul>

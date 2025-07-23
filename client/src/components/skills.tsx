@@ -45,31 +45,40 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-light-custom mb-4">Core Competencies</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-light-custom/60 max-w-2xl mx-auto">
-            Expertise in modern AI technologies, cloud platforms, and full-stack development
+    <section id="skills" className="py-24 bg-white dark:bg-slate-900">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">Technical Skills</h2>
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+            A comprehensive overview of my technical expertise and proficiency levels
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 mb-20">
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className="bg-secondary/50 p-8 rounded-xl border border-white/10 hover:border-primary/50 transition-all duration-300"
+              className="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300"
             >
-              <div className="text-primary-custom mb-4">
+              <div className="text-blue-600 mb-6">
                 {category.icon}
               </div>
-              <h3 className="text-xl font-semibold text-light-custom mb-4">{category.title}</h3>
-              <div className="space-y-3">
+              <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">{category.title}</h3>
+              <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="flex justify-between items-center">
-                    <span className="text-light-custom/80">{skill.name}</span>
-                    <span className="text-accent-custom">{skill.level}</span>
+                  <div key={skillIndex} className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-700 dark:text-slate-300 font-medium">{skill.name}</span>
+                      <span className="text-cyan-500 font-semibold">{skill.level}</span>
+                    </div>
+                    <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                      <div 
+                        className={`h-2 rounded-full ${
+                          skill.level === 'Expert' ? 'w-full bg-blue-600' :
+                          skill.level === 'Advanced' ? 'w-4/5 bg-cyan-500' : 'w-3/5 bg-slate-400'
+                        }`}
+                      ></div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -78,13 +87,15 @@ export default function Skills() {
         </div>
 
         {/* Technology Icons */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-semibold text-center text-light-custom mb-8">Technologies I Work With</h3>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+        <div className="text-center">
+          <h3 className="text-3xl font-semibold text-slate-900 dark:text-white mb-12">Technologies I Work With</h3>
+          <div className="flex flex-wrap justify-center items-center gap-12">
             {technologies.map((tech, index) => (
-              <div key={index} className="flex flex-col items-center">
-                {tech.icon}
-                <span className="text-sm mt-2">{tech.name}</span>
+              <div key={index} className="flex flex-col items-center group">
+                <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300">
+                  {tech.icon}
+                </div>
+                <span className="text-sm mt-3 text-slate-600 dark:text-slate-300 font-medium">{tech.name}</span>
               </div>
             ))}
           </div>

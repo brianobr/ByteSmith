@@ -80,40 +80,40 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-light-custom mb-4">Let's Build Something Amazing</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-light-custom/60 max-w-2xl mx-auto">
-            Ready to bring your AI project to life? Let's discuss how we can work together to create innovative solutions.
+    <section id="contact" className="py-24 bg-white dark:bg-slate-900">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">Get In Touch</h2>
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+            Ready to collaborate on your next project? Let's discuss how we can work together
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
           <div className="space-y-8">
-            <h3 className="text-2xl font-semibold text-primary-custom mb-6">Get In Touch</h3>
+            <div>
+              <h3 className="text-3xl font-semibold text-slate-900 dark:text-white mb-8">Let's Connect</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
+                I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hello, feel free to reach out!
+              </p>
+            </div>
             
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center">
-                  <div className={`p-3 rounded-lg mr-4 ${
-                    index % 2 === 0 ? 'bg-primary/20' : 'bg-accent/20'
-                  }`}>
-                    {info.icon}
+                <div key={index} className="flex items-center group">
+                  <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl mr-6 group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors duration-300">
+                    <div className="text-blue-600 dark:text-blue-400">
+                      {info.icon}
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-light-custom">{info.title}</h4>
+                    <h4 className="font-semibold text-slate-900 dark:text-white text-lg">{info.title}</h4>
                     <a 
                       href={info.link} 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`transition-colors duration-300 ${
-                        index % 2 === 0 
-                          ? 'text-light-custom/60 hover:text-primary-custom' 
-                          : 'text-light-custom/60 hover:text-accent-custom'
-                      }`}
+                      className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                     >
                       {info.value}
                     </a>
@@ -122,14 +122,14 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Availability */}
-            <div className="bg-secondary/50 p-6 rounded-lg border border-white/10">
-              <h4 className="font-semibold text-light-custom mb-3">Current Availability</h4>
-              <div className="flex items-center text-accent-custom mb-2">
-                <Circle className="w-3 h-3 mr-2 fill-current" />
-                <span>Available for new projects</span>
+            {/* Availability Status */}
+            <div className="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <h4 className="font-semibold text-slate-900 dark:text-white text-lg mb-4">Current Availability</h4>
+              <div className="flex items-center text-green-600 dark:text-green-400 mb-4">
+                <Circle className="w-3 h-3 mr-3 fill-current" />
+                <span className="font-medium">Available for new projects</span>
               </div>
-              <p className="text-light-custom/60 text-sm">
+              <p className="text-slate-600 dark:text-slate-300">
                 I'm currently accepting new freelance projects and consulting opportunities. 
                 Let's discuss how I can help bring your AI vision to reality.
               </p>
@@ -137,24 +137,24 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-secondary/50 p-8 rounded-xl border border-white/10">
-            <h3 className="text-2xl font-semibold text-light-custom mb-6">Send a Message</h3>
+          <div className="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700">
+            <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-8">Send a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-light-custom/80 font-medium mb-2">Name</label>
+                <label htmlFor="name" className="block text-slate-700 dark:text-slate-300 font-medium mb-3">Name</label>
                 <Input
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="Your full name"
-                  className="w-full bg-dark-custom/50 border-white/20 text-light-custom placeholder:text-light-custom/40 focus:border-primary"
+                  className="w-full bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500 rounded-lg"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-light-custom/80 font-medium mb-2">Email</label>
+                <label htmlFor="email" className="block text-slate-700 dark:text-slate-300 font-medium mb-3">Email</label>
                 <Input
                   type="email"
                   id="email"
@@ -162,25 +162,25 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="your.email@example.com"
-                  className="w-full bg-dark-custom/50 border-white/20 text-light-custom placeholder:text-light-custom/40 focus:border-primary"
+                  className="w-full bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500 rounded-lg"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-light-custom/80 font-medium mb-2">Subject</label>
+                <label htmlFor="subject" className="block text-slate-700 dark:text-slate-300 font-medium mb-3">Subject</label>
                 <Input
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
                   placeholder="Project inquiry"
-                  className="w-full bg-dark-custom/50 border-white/20 text-light-custom placeholder:text-light-custom/40 focus:border-primary"
+                  className="w-full bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500 rounded-lg"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-light-custom/80 font-medium mb-2">Message</label>
+                <label htmlFor="message" className="block text-slate-700 dark:text-slate-300 font-medium mb-3">Message</label>
                 <Textarea
                   id="message"
                   name="message"
@@ -188,7 +188,7 @@ export default function Contact() {
                   onChange={handleInputChange}
                   rows={4}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-dark-custom/50 border-white/20 text-light-custom placeholder:text-light-custom/40 focus:border-primary resize-none"
+                  className="w-full bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500 resize-none rounded-lg"
                   required
                 />
               </div>
@@ -196,9 +196,9 @@ export default function Contact() {
               <Button 
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold transition-all duration-300 transform hover:scale-[1.02]"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg"
               >
-                <Send className="w-4 h-4 mr-2" />
+                <Send className="w-5 h-5 mr-2" />
                 Send Message
               </Button>
             </form>
