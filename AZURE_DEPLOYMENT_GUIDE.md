@@ -73,18 +73,29 @@ This guide will walk you through deploying your portfolio website to Azure App S
    - Click "Save"
    - Azure will automatically create a GitHub Actions workflow file
 
-## Step 4: Update GitHub Secrets
+## Step 4: Configure GitHub Secrets (CRITICAL)
+
+**Your deployment is failing because this step is missing. You must complete this before deployments will work.**
 
 1. **Download Publish Profile:**
-   - In Azure App Service, click "Get publish profile"
-   - Download the `.publishsettings` file
+   - Go to your Azure App Service in the Azure portal
+   - Click "Get publish profile" button (in the Overview section)
+   - This downloads a `.publishsettings` file to your computer
 
 2. **Add to GitHub Secrets:**
-   - Go to your GitHub repository
-   - Go to Settings → Secrets and variables → Actions
-   - Click "New repository secret"
-   - Name: `AZURE_WEBAPP_PUBLISH_PROFILE`
-   - Value: Paste the entire content of the downloaded publish profile file
+   - Go to your GitHub repository on GitHub.com
+   - Click Settings tab (top of repository page)
+   - Click "Secrets and variables" → "Actions" (left sidebar)
+   - Click "New repository secret" button
+   - **Name**: `AZURE_WEBAPP_PUBLISH_PROFILE`
+   - **Value**: Open the downloaded `.publishsettings` file in a text editor and copy ALL the content
+   - Click "Add secret"
+
+3. **Verify Secret is Added:**
+   - You should see `AZURE_WEBAPP_PUBLISH_PROFILE` in your repository secrets list
+   - The value will be hidden for security
+
+**Without this secret, all deployments will fail with "invalid publish profile" error.**
 
 ## Step 5: Update Workflow Configuration
 
@@ -98,8 +109,14 @@ The deployment files have been created for you:
 
 ### Update the workflow file:
 1. Open `.github/workflows/azure-webapp-deploy.yml`
-2. Change `AZURE_WEBAPP_NAME` to match your App Service name
-3. Commit and push the changes
+2. Change `AZURE_WEBAPP_NAME` from `bytesmith-portfolio` to match your actual App Service name
+3. **Important**: The app name must exactly match what you created in Azure
+4. Commit and push the changes
+
+**Example**: If your Azure App Service is named `my-portfolio-site`, change line 10:
+```yaml
+AZURE_WEBAPP_NAME: my-portfolio-site
+```
 
 ## Step 6: Deploy
 
