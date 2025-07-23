@@ -1,0 +1,19 @@
+{
+  "name": "bytesmith-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Brian O'Brien - AI Software Engineer Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Build completed in GitHub Actions'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "author": "Brian O'Brien",
+  "license": "MIT"
+}
