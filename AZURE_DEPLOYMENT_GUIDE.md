@@ -103,14 +103,36 @@ The deployment files have been created for you:
 
 ## Step 6: Deploy
 
-1. **Trigger Deployment:**
-   - Any push to the `main` branch will trigger deployment
-   - You can also manually trigger from GitHub Actions tab
+### Automatic Deployment
+- Any push to the `main` branch automatically triggers deployment
+- Pull requests also trigger builds for testing
 
-2. **Monitor Deployment:**
-   - Go to GitHub → Actions tab
-   - Watch the deployment progress
-   - Check Azure App Service logs if needed
+### Manual Deployment
+You can manually trigger deployments with custom options:
+
+1. **Go to GitHub repository → Actions tab**
+2. **Select "Deploy to Azure App Service" workflow**
+3. **Click "Run workflow" button**
+4. **Configure deployment options:**
+   - **Environment**: `production` or `staging`
+   - **Build mode**: 
+     - `standard` - Normal build with cache
+     - `force-rebuild` - Clean rebuild (removes node_modules)
+     - `skip-cache` - Install without cache
+   - **Database migrations**: Enable/disable database updates
+   - **Custom message**: Add deployment notes
+
+### When to Use Manual Deployment
+
+- **Standard**: Deploy specific commits or control timing
+- **Force Rebuild**: Fix build issues or dependency conflicts  
+- **Skip Cache**: Resolve npm cache corruption
+- **Database Off**: Deploy without running migrations
+
+### Monitor Deployment
+- Go to GitHub → Actions tab during deployment
+- Watch build and deploy steps in real-time
+- Workflow shows website URL when complete
 
 ## Step 7: Configure Custom Domain (Optional)
 
