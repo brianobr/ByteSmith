@@ -73,29 +73,63 @@ This guide will walk you through deploying your portfolio website to Azure App S
    - Click "Save"
    - Azure will automatically create a GitHub Actions workflow file
 
-## Step 4: Configure GitHub Secrets (CRITICAL)
+## Step 4: Configure OpenID Connect Authentication (Recommended)
 
-**Your deployment is failing because this step is missing. You must complete this before deployments will work.**
+**Modern, secure authentication using OpenID Connect instead of publish profiles.**
 
-1. **Download Publish Profile:**
-   - Go to your Azure App Service in the Azure portal
-   - Click "Get publish profile" button (in the Overview section)
-   - This downloads a `.publishsettings` file to your computer
+### Create Azure App Registration
 
-2. **Add to GitHub Secrets:**
-   - Go to your GitHub repository on GitHub.com
-   - Click Settings tab (top of repository page)
-   - Click "Secrets and variables" → "Actions" (left sidebar)
-   - Click "New repository secret" button
-   - **Name**: `AZURE_WEBAPP_PUBLISH_PROFILE`
-   - **Value**: Open the downloaded `.publishsettings` file in a text editor and copy ALL the content
-   - Click "Add secret"
+1. **In Azure Portal:**
+   - Go to "Azure Active Directory" → "App registrations"
+   - Click "New registration"
+   - **Name**: `GitHub-Actions-Portfolio`
+   - **Supported account types**: Single tenant
+   - Click "Register"
 
-3. **Verify Secret is Added:**
-   - You should see `AZURE_WEBAPP_PUBLISH_PROFILE` in your repository secrets list
-   - The value will be hidden for security
+2. **Configure Authentication:**
+   - Go to "Certificates & secrets"
+   - Under "Federated credentials", click "Add credential"
+   - **Scenario**: GitHub Actions deploying Azure resources
+   - **Organization**: Your GitHub username
+   - **Repository**: Your repository name
+   - **Entity type**: Branch
+   - **GitHub branch name**: main
+   - **Name**: `main-branch-deploy`
+   - Click "Add"
 
-**Without this secret, all deployments will fail with "invalid publish profile" error.**
+3. **Get Required Values:**
+   - **Application (client) ID**: Copy from Overview page
+   - **Directory (tenant) ID**: Copy from Overview page
+   - **Subscription ID**: Go to Subscriptions, copy your subscription ID
+
+### Assign Azure Permissions
+
+1. **Go to your App Service:**
+   - Click "Access control (IAM)"
+   - Click "Add" → "Add role assignment"
+   - **Role**: Website Contributor
+   - **Assign access to**: User, group, or service principal
+   - **Select**: Search for your app registration name (`GitHub-Actions-Portfolio`)
+   - Click "Save"
+
+### Configure GitHub Secrets
+
+**In your GitHub repository → Settings → Secrets and variables → Actions:**
+
+Add these three secrets:
+- **Name**: `AZURE_CLIENT_ID`
+  **Value**: Application (client) ID from app registration
+- **Name**: `AZURE_TENANT_ID`  
+  **Value**: Directory (tenant) ID from app registration
+- **Name**: `AZURE_SUBSCRIPTION_ID`
+  **Value**: Your Azure subscription ID
+
+### Why OpenID Connect is Better
+
+- **No stored credentials**: No long-lived secrets in GitHub
+- **Better security**: Azure AD manages authentication
+- **Microsoft recommended**: Modern best practice
+- **Automatic rotation**: No manual credential updates needed
 
 ## Step 5: Update Workflow Configuration
 
