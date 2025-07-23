@@ -31,6 +31,11 @@ try {
     fs.copyFileSync('azure-package.json', 'dist/package.json');
   }
   
+  // Copy shared schema and server files for database functionality
+  if (fs.existsSync('shared')) {
+    execSync('cp -r shared dist/', { stdio: 'inherit' });
+  }
+  
   // Copy package-lock.json if it exists
   if (fs.existsSync('package-lock.json')) {
     fs.copyFileSync('package-lock.json', 'dist/package-lock.json');

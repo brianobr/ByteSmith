@@ -17,11 +17,19 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from the dist/public directory
 app.use(express.static(path.join(__dirname, 'dist', 'public')));
 
-// Simple contact form API endpoint
+// Simple contact form API endpoint (basic fallback)
 app.post('/api/contact', (req, res) => {
   console.log('Contact form submission:', req.body);
-  // In a real application, you would process the form data here
-  // For now, just return success
+  // Basic validation
+  const { name, email, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ 
+      success: false, 
+      message: 'Name, email, and message are required' 
+    });
+  }
+  
+  // In Azure, this will be handled by the full application
   res.json({ success: true, message: 'Message received successfully!' });
 });
 

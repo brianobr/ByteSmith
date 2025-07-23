@@ -12,7 +12,13 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "@neondatabase/serverless": "^0.10.4",
+    "drizzle-orm": "^0.39.1",
+    "drizzle-zod": "^0.7.0",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.4.0",
+    "ws": "^8.18.0"
   },
   "author": "Brian O'Brien",
   "license": "MIT"

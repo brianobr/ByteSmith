@@ -125,10 +125,17 @@ The deployment files have been created for you:
 
 ## Environment Variables
 
-If you need environment variables:
-1. Go to Azure App Service → Configuration
-2. Add application settings as needed
-3. These will be available as `process.env.VARIABLE_NAME`
+### Required for Database (Optional)
+If you want to store contact form submissions and analytics:
+
+1. **Create Azure Database for PostgreSQL** (see AZURE_DATABASE_GUIDE.md)
+2. **In Azure App Service → Configuration:**
+   - Add `DATABASE_URL` with your PostgreSQL connection string
+   - Format: `postgresql://username:password@server.postgres.database.azure.com:5432/postgres?ssl=true`
+
+3. **Other optional variables:**
+   - `NODE_ENV=production` (set automatically by Azure)
+   - Any other environment variables your app needs
 
 ## Troubleshooting
 
