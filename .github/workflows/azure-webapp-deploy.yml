@@ -107,9 +107,6 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: ${{ github.event.inputs.environment || 'Production' }}
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
     - name: Download artifact from build job

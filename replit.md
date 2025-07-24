@@ -14,6 +14,7 @@ Preferred communication style: Simple, everyday language.
 - Updated GitHub Actions workflow to use secure OpenID Connect authentication
 - Fixed deprecated artifact actions and ES module compatibility
 - Used Azure Deployment Center auto-generated app registration and secrets
+- Fixed federated identity mismatch by removing GitHub environment configuration
 - GitHub repository: brianobr/ByteSmith
 - Azure App Service: app-byteSmith-CUS
 - Using auto-generated secrets: AZUREAPPSERVICE_CLIENTID_AE4998685E7A4B529B9C22B2759AA4F1
