@@ -51,6 +51,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Debug - Print GitHub Secrets
+      run: |
+        echo "=== GitHub Secrets Debug ==="
+        echo "Client ID: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AE4998685E7A4B529B9C22B2759AA4F1 }}"
+        echo "Tenant ID: ${{ secrets.AZUREAPPSERVICE_TENANTID_428DC6E42F6C41038B126ED3F4E5A944 }}"
+        echo "Subscription ID: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5091F30AC60E43BC9EE61A1F38D50876 }}"
+        echo "Database URL: ${{ secrets.DATABASE_URL }}"
+        echo "=== End Debug ==="
+
     - name: Azure Login
       uses: azure/login@v2
       with:
@@ -116,6 +125,15 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: node-app
+
+    - name: Debug - Print GitHub Secrets (Deploy Phase)
+      run: |
+        echo "=== Deploy Phase Secrets Debug ==="
+        echo "Client ID: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AE4998685E7A4B529B9C22B2759AA4F1 }}"
+        echo "Tenant ID: ${{ secrets.AZUREAPPSERVICE_TENANTID_428DC6E42F6C41038B126ED3F4E5A944 }}"
+        echo "Subscription ID: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5091F30AC60E43BC9EE61A1F38D50876 }}"
+        echo "Database URL: ${{ secrets.DATABASE_URL }}"
+        echo "=== End Deploy Phase Debug ==="
 
     - name: Login to Azure
       uses: azure/login@v2
