@@ -1,7 +1,4 @@
 import { 
-  users, 
-  contactSubmissions, 
-  pageViews,
   type User, 
   type InsertUser,
   type ContactSubmission,
@@ -9,8 +6,6 @@ import {
   type PageView,
   type InsertPageView
 } from "@shared/schema";
-import { db } from "./db";
-import { eq } from "drizzle-orm";
 
 // Storage interface with portfolio-specific methods
 export interface IStorage {
@@ -111,59 +106,5 @@ export class MemStorage implements IStorage {
   }
 }
 
-export class DatabaseStorage implements IStorage {
-  async getUser(id: number): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user || undefined;
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user || undefined;
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(insertUser)
-      .returning();
-    return user;
-  }
-
-  async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
-    const [contact] = await db
-      .insert(contactSubmissions)
-      .values(submission)
-      .returning();
-    return contact;
-  }
-
-  async getContactSubmissions(): Promise<ContactSubmission[]> {
-    return await db.select().from(contactSubmissions).orderBy(contactSubmissions.createdAt);
-  }
-
-  async markContactAsRead(id: number): Promise<void> {
-    await db
-      .update(contactSubmissions)
-      .set({ isRead: true })
-      .where(eq(contactSubmissions.id, id));
-  }
-
-  async recordPageView(pageView: InsertPageView): Promise<PageView> {
-    const [view] = await db
-      .insert(pageViews)
-      .values(pageView)
-      .returning();
-    return view;
-  }
-
-  async getPageViews(page?: string): Promise<PageView[]> {
-    if (page) {
-      return await db.select().from(pageViews).where(eq(pageViews.page, page));
-    }
-    return await db.select().from(pageViews).orderBy(pageViews.createdAt);
-  }
-}
-
-// Use database storage if DATABASE_URL is available, otherwise use memory storage
-export const storage = process.env.DATABASE_URL ? new DatabaseStorage() : new MemStorage();
+// Always use in-memory storage (no database required)
+export const storage = new MemStorage();

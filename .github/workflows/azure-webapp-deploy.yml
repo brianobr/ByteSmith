@@ -78,13 +78,10 @@ jobs:
     - name: Build application for Azure
       run: node build-azure.js
 
-    - name: Run database migrations (if enabled)
-      if: github.event.inputs.deploy_database == 'true' && env.DATABASE_URL != ''
+    - name: Skip database migrations (using in-memory storage)
+      if: github.event.inputs.deploy_database == 'true'
       run: |
-        echo "Running database migrations..."
-        npm run db:push || echo "Database migrations skipped (no DATABASE_URL)"
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        echo "Database migrations skipped - using in-memory storage"
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4

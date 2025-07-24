@@ -10,6 +10,14 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### July 24, 2025 - Database Removal and In-Memory Storage
+- Removed PostgreSQL database dependency to eliminate Azure deployment complexity
+- Switched to pure in-memory storage implementation using MemStorage class
+- Updated azure-package.json to remove database-related dependencies (@neondatabase/serverless, drizzle-orm, ws)
+- Fixed Azure startup command parameter from 'startup-file' to 'startup-command'
+- Resolved 503 Service Unavailable error by eliminating DATABASE_URL requirement
+- Simplified deployment architecture: no external database configuration needed
+
 ### January 23, 2025 - OIDC Authentication Setup
 - Updated GitHub Actions workflow to use secure OpenID Connect authentication
 - Fixed deprecated artifact actions and ES module compatibility
@@ -37,13 +45,13 @@ The application follows a modern full-stack architecture with clear separation b
 - **Language**: TypeScript with ES modules
 - **Development**: Hot reload with Vite integration in development mode
 - **API**: RESTful endpoints for contact form and resume download
-- **Storage**: In-memory storage implementation (ready for database integration)
+- **Storage**: In-memory storage implementation (MemStorage class for contact forms and page views)
 
-### Database Architecture
-- **ORM**: Drizzle ORM configured for PostgreSQL
-- **Schema**: Located in `shared/schema.ts` with user authentication structure
-- **Migrations**: Managed through Drizzle Kit
-- **Connection**: Configured for Neon Database (serverless PostgreSQL)
+### Storage Architecture
+- **Implementation**: In-memory storage with MemStorage class
+- **Schema**: TypeScript interfaces in `shared/schema.ts` for type safety
+- **Data Persistence**: Contact submissions and page views stored in memory (resets on restart)
+- **No External Dependencies**: Eliminates need for database configuration in production
 
 ## Key Components
 
