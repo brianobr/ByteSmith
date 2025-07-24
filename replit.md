@@ -8,6 +8,16 @@ This is a modern portfolio website for Brian O'Brien, an AI Software Engineer sp
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+### January 23, 2025 - OIDC Authentication Setup
+- Updated GitHub Actions workflow to use secure OpenID Connect authentication
+- Fixed deprecated artifact actions and ES module compatibility
+- Configured Azure App Registration for federated credentials
+- GitHub repository: brianobr/ByteSmith
+- Azure App Service: app-byteSmith-CUS
+- Required secrets: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
+
 ## System Architecture
 
 The application follows a modern full-stack architecture with clear separation between client and server components:
