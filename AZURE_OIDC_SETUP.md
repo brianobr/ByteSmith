@@ -66,22 +66,26 @@ This guide shows you how to set up secure OpenID Connect (OIDC) authentication b
 
 ### 4. Assign Permissions to App Registration
 
-**For your Azure App Service:**
+**CRITICAL: You need to assign permissions at BOTH the subscription AND App Service levels.**
 
-1. **Go to your App Service:**
-   - Navigate to your App Service resource
-   - Click "Access control (IAM)" in left sidebar
-
-2. **Add Role Assignment:**
-   - Click "Add" → "Add role assignment"
-   - **Role**: Select "Website Contributor"
-   - Click "Next"
+**Step 1: Subscription Level Permissions**
+1. **Go to Subscriptions in Azure Portal**
+2. **Click your subscription** (`dc8a1840-c335-40db-baf0-abf3940c8c1d`)
+3. **Click Access control (IAM)**
+4. **Add role assignment:**
+   - **Role**: Reader (minimum required to see subscription)
    - **Assign access to**: User, group, or service principal
-   - Click "Select members"
-   - Search for your app registration name: `GitHub-Actions-Portfolio-Deploy`
-   - Select it and click "Select"
-   - Click "Review + assign"
-   - Click "Review + assign" again
+   - **Select**: Search for your app registration client ID: `daf0e2ee-0978-4306-afc5-4f4b07bcca33`
+   - **Save**
+
+**Step 2: App Service Level Permissions**
+1. **Go to your App Service** (`app-byteSmith-CUS`)
+2. **Click Access control (IAM)**
+3. **Add role assignment:**
+   - **Role**: Website Contributor
+   - **Assign access to**: User, group, or service principal
+   - **Select**: Search for your app registration client ID: `daf0e2ee-0978-4306-afc5-4f4b07bcca33`
+   - **Save**
 
 ### 5. Configure GitHub Repository Secrets
 
