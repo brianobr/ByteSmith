@@ -13,10 +13,11 @@ Preferred communication style: Simple, everyday language.
 ### January 23, 2025 - OIDC Authentication Setup
 - Updated GitHub Actions workflow to use secure OpenID Connect authentication
 - Fixed deprecated artifact actions and ES module compatibility
-- Configured Azure App Registration for federated credentials
+- Used Azure Deployment Center auto-generated app registration and secrets
 - GitHub repository: brianobr/ByteSmith
 - Azure App Service: app-byteSmith-CUS
-- Required secrets: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
+- Using auto-generated secrets: AZUREAPPSERVICE_CLIENTID_AE4998685E7A4B529B9C22B2759AA4F1
+- Advanced workflow features: database migrations, manual deployment controls
 
 ## System Architecture
 

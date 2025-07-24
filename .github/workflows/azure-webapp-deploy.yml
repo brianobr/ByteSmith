@@ -54,9 +54,9 @@ jobs:
     - name: Azure Login
       uses: azure/login@v2
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AE4998685E7A4B529B9C22B2759AA4F1 }}
+        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_428DC6E42F6C41038B126ED3F4E5A944 }}
+        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5091F30AC60E43BC9EE61A1F38D50876 }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -120,9 +120,9 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v2
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AE4998685E7A4B529B9C22B2759AA4F1 }}
+        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_428DC6E42F6C41038B126ED3F4E5A944 }}
+        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5091F30AC60E43BC9EE61A1F38D50876 }}
 
 
     - name: 'Deploy to Azure Web App'
