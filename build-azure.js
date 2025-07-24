@@ -31,10 +31,7 @@ try {
     fs.copyFileSync('package-lock.json', 'dist/package-lock.json');
   }
   
-  // Copy web.config for Azure App Service
-  if (fs.existsSync('web.config')) {
-    fs.copyFileSync('web.config', 'dist/web.config');
-  }
+
   
   console.log('✅ Azure build completed successfully!');
   
