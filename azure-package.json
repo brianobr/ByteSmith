@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Brian O'Brien - AI Software Engineer Portfolio",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "build": "echo 'Build completed in GitHub Actions'"
   },
   "engines": {
